@@ -7,13 +7,17 @@ import Seo from "../components/seo"
 
 
 const SecondPage = () => {
+  const generator = rough.generator()
   useLayoutEffect(() => {
      const canvas = document.getElementById("canvas")
      const ctx = canvas.getContext("2d")
-
+     
 
      const roughCanvas = rough.canvas(canvas)
-     roughCanvas.rectangle(10, 10, 100, 100)
+     const rect = generator.rectangle(10, 10, 100, 100)
+     const line = generator.line(10, 10, 110, 110)
+     roughCanvas.draw(rect)
+     roughCanvas.draw(line)
 
     
 
