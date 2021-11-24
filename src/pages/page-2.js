@@ -8,6 +8,10 @@ import Seo from "../components/seo"
 
 const SecondPage = () => {
   const generator = rough.generator()
+  const [elements, setElements] = useState([])
+  const [drawing, setDrawing] = useState(false)
+
+
   useLayoutEffect(() => {
      const canvas = document.getElementById("canvas")
      const ctx = canvas.getContext("2d")
@@ -23,9 +27,31 @@ const SecondPage = () => {
 
    })
 
+   const handleMouseDown = () => {
+    setDrawing(true)
+   }
+   const handleMouseMove = () => {
+    if(!drawing) return
+
+    const {clientX, clientY} = Event
+    console.log(clientX, clientY)
+   }
+   const handleMouseUp = () => {
+    setDrawing(false)
+   }
+
+
   return (
   <Layout>
-    <canvas id='canvas' width={window.innerWidth} height={window.innerHeight}> Canvas </canvas>
+    <canvas id='canvas' 
+    width={window.innerWidth} 
+    height={window.innerHeight}
+    onMouseDown={handleMouseDown}
+    onMouseMove={handleMouseMove}
+    onMouseUp={handleMouseUp}
+    > 
+      Canvas 
+      </canvas>
     <Seo title="Page two" />
     <Link to="/">Go back to the homepage</Link>
   </Layout>
