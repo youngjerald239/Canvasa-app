@@ -12,8 +12,8 @@ const SecondPage = () => {
      const ctx = canvas.getContext("2d")
 
 
-    const roughCanvas = rough.canvas(canvas)
-    roughCanvas.rectangle(10, 10, 100, 100)
+     const roughCanvas = rough.canvas(canvas)
+     roughCanvas.rectangle(10, 10, 100, 100)
 
     
 
