@@ -4,8 +4,12 @@ import rough from 'roughjs/bundled/rough.esm'
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
-const generator = rough.generator()
+const generator = rough.generator();
 
+function roughElement(x1, y1, x2, y2) {
+  const roughElement = generator.line(x1, y1, x2, y2)
+  return {x1, y1, x2, y2, roughElement}
+}
 
 
 const SecondPage = () => {
@@ -20,14 +24,13 @@ const SecondPage = () => {
      context.clearRect(0, 0, canvas.width, canvas.height)
 
      const roughCanvas = rough.canvas(canvas)
-     const rect = generator.rectangle(10, 10, 100, 100)
-     const line = generator.line(10, 10, 110, 110)
-     roughCanvas.draw(rect)
-     roughCanvas.draw(line)
+    
+     elements.forEach(({roughElement}) => roughCanvas.draw(roughElement))
+     
 
     
 
-   })
+   }, [elements])
 
    const handleMouseDown = () => {
     setDrawing(true)
