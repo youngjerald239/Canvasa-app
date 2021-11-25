@@ -4,9 +4,10 @@ import rough from 'roughjs/bundled/rough.esm'
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
+
 const generator = rough.generator();
 
-function roughElement(x1, y1, x2, y2) {
+ new function createElement(x1, y1, x2, y2) {
   const roughElement = generator.line(x1, y1, x2, y2)
   return {x1, y1, x2, y2, roughElement}
 }
